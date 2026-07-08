@@ -20,7 +20,9 @@ from citeguard.status import Signal, Source, StatusKind, Strength, normalize_doi
 
 OPENALEX_BASE = "https://api.openalex.org"
 BATCH_SIZE = 50  # OpenAlex max values per filter
-WORK_SELECT = "id,doi,title,publication_date,is_retracted,is_paratext,referenced_works"
+WORK_SELECT = (
+    "id,doi,title,publication_date,is_retracted,is_paratext,referenced_works,primary_location"
+)
 
 
 class OpenAlexClient:
