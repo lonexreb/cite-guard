@@ -32,6 +32,9 @@ class Source(StrEnum):
     CROSSREF = "crossref"
 
 
+ALL_SOURCES = frozenset(Source)
+
+
 class Strength(StrEnum):
     STRONG = "strong"  # documented editorial notice (RW record, Crossref update-to)
     WEAK = "weak"  # derived boolean (OpenAlex is_retracted)
