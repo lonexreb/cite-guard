@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+dist/
+
+# local data: RW dump, caches, watch state (never commit)
+data/*
+!data/.gitkeep
+
+# eval run outputs (fixtures ARE committed; results are not)
+evals/results/
