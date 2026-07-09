@@ -118,4 +118,10 @@ with gratitude.
 
 ## License
 
-TBD (intended to be permissive / open — see `GOAL.md` for the open-science ethos).
+**MIT** (see `LICENSE`) — permissive and maximally reusable, in keeping with the
+open-science ethos in `GOAL.md`.
+
+The code is CiteGuard's. The **data it builds on is not** and carries its own terms:
+Retraction Watch (via Crossref) and OpenAlex/Crossref metadata. CiteGuard redistributes
+only a tiny evaluation extract (see `evals/fixtures/ATTRIBUTION.md`); anything at scale
+should be fetched from the upstream sources under their licenses.

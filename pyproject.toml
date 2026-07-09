@@ -5,11 +5,39 @@ description = "Free, open, OpenAlex-native watchdog for retracted and problemati
 readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"
+authors = [{ name = "Shubhankar", email = "reach2shubhankar@gmail.com" }]
+keywords = [
+    "retraction",
+    "citation-integrity",
+    "openalex",
+    "retraction-watch",
+    "crossref",
+    "research-integrity",
+    "mcp",
+    "bibliometrics",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Text Processing :: Indexing",
+]
 dependencies = [
     "httpx>=0.27",
     "bibtexparser>=1.4",
     "mcp>=1.2",
 ]
+
+[project.urls]
+Homepage = "https://github.com/lonexreb/cite-guard"
+Repository = "https://github.com/lonexreb/cite-guard"
+Issues = "https://github.com/lonexreb/cite-guard/issues"
+
+[project.scripts]
+citeguard-mcp = "citeguard.mcp_server:main"
 
 [dependency-groups]
 dev = [

@@ -147,5 +147,9 @@ def watch_institution(ror: str, since: str | None = None) -> dict[str, Any]:
     return digest.to_dict()
 
 
-if __name__ == "__main__":
+def main() -> None:
     app.run()
+
+
+if __name__ == "__main__":
+    main()
