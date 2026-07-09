@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+title: "CiteGuard: an open, OpenAlex-native citation-integrity layer"
+message: "If you use CiteGuard, please cite it using these metadata."
+type: software
+authors:
+  - given-names: Shubhankar
+    email: reach2shubhankar@gmail.com
+repository-code: "https://github.com/lonexreb/cite-guard"
+abstract: >-
+  CiteGuard flags references that are retracted, corrected, or subject to an
+  expression of concern, reconciling the Retraction Watch dataset, the OpenAlex
+  citation graph, and Crossref into a single conservative editorial-status model.
+  It ships as an evals-backed MCP server and a reference-list checker.
+keywords:
+  - retraction
+  - citation integrity
+  - research integrity
+  - OpenAlex
+  - Retraction Watch
+  - Crossref
+  - Model Context Protocol
+license: MIT
+version: 0.1.0

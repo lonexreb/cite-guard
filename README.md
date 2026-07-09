@@ -98,6 +98,36 @@ uv run python -m evals.run                # run the eval harness (precision/reca
 uv run python -m citeguard.mcp_server     # launch the MCP server locally
 ```
 
+## Connect it as an MCP server
+
+CiteGuard exposes `get_editorial_status`, `check_references`, and `watch_institution`
+to any MCP client. After `pip install citeguard` (or `uv tool install citeguard`), the
+`citeguard-mcp` command launches the stdio server.
+
+**Claude Desktop** — add to `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "citeguard": {
+      "command": "citeguard-mcp",
+      "env": {
+        "OPENALEX_API_KEY": "your-key",
+        "CITEGUARD_MAILTO": "you@example.org"
+      }
+    }
+  }
+}
+```
+
+**Cursor / other clients** — point them at the same `citeguard-mcp` command (stdio
+transport). Running from a checkout instead of an install? Use
+`"command": "uv", "args": ["run", "citeguard-mcp"]` with `"cwd"` set to the repo.
+
+On first call the server downloads the Retraction Watch dump (~65 MB, free) into
+`CITEGUARD_DATA_DIR` (default `./data`). Editorial-notice lookups (Retraction Watch,
+Crossref) need no key; OpenAlex corroboration and `watch_institution` do.
+
 ## Roadmap (MVP)
 
 1. `status.py` — the normalized editorial-status model (foundation)

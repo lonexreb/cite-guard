@@ -1,0 +1,32 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
+  "name": "io.github.lonexreb/citeguard",
+  "description": "Free, open, OpenAlex-native watchdog for retracted and problematic citations. Flags references that are retracted, corrected, or under an expression of concern, reconciling Retraction Watch, OpenAlex, and Crossref conservatively.",
+  "version": "0.1.0",
+  "repository": {
+    "url": "https://github.com/lonexreb/cite-guard",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "citeguard",
+      "version": "0.1.0",
+      "transport": { "type": "stdio" },
+      "environmentVariables": [
+        {
+          "name": "OPENALEX_API_KEY",
+          "description": "OpenAlex API key (required for live OpenAlex lookups and watch_institution).",
+          "isRequired": false,
+          "isSecret": true
+        },
+        {
+          "name": "CITEGUARD_MAILTO",
+          "description": "Contact email for the OpenAlex/Crossref polite pool.",
+          "isRequired": false,
+          "isSecret": false
+        }
+      ]
+    }
+  ]
+}
