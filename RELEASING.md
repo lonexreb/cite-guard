@@ -15,18 +15,20 @@ CI (`.github/workflows/ci.yml`) runs ruff + mypy + pytest (incl. the eval gate) 
 
 ## 1. Publish to PyPI
 
-Get a token at https://pypi.org/manage/account/token/ (scope it to the `citeguard`
-project after the first upload, or use a Trusted Publisher — see step 4).
+Get a token at https://pypi.org/manage/account/token/ (an account-scoped token for the
+first upload; scope it to the `cite-guard` project afterwards, or use a Trusted
+Publisher — see step 4).
 
 ```bash
-uv build                                   # dist/citeguard-0.1.0.{tar.gz,whl}
+uv build                                   # dist/cite_guard-0.1.0.{tar.gz,whl}
 uv publish --token pypi-XXXX               # or: UV_PUBLISH_TOKEN=... uv publish
 ```
 
-Verify: `uv tool install citeguard && citeguard-mcp` should launch the server.
+Verify: `uv tool install cite-guard && citeguard-mcp` should launch the server.
 
-> If the name `citeguard` is taken on PyPI, pick an alternative (e.g. `cite-guard`)
-> and update `[project].name` in `pyproject.toml` + the `identifier` in `server.json`.
+> Distribution name is `cite-guard` (the bare `citeguard` is taken on PyPI by an
+> unrelated project). The importable module stays `citeguard`; the console command
+> stays `citeguard-mcp`.
 
 ## 2. Tag a release + archive to Zenodo (gets the DOI)
 

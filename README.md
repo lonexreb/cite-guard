@@ -101,7 +101,7 @@ uv run python -m citeguard.mcp_server     # launch the MCP server locally
 ## Connect it as an MCP server
 
 CiteGuard exposes `get_editorial_status`, `check_references`, and `watch_institution`
-to any MCP client. After `pip install citeguard` (or `uv tool install citeguard`), the
+to any MCP client. After `pip install cite-guard` (or `uv tool install cite-guard`), the
 `citeguard-mcp` command launches the stdio server.
 
 **Claude Desktop** — add to `claude_desktop_config.json`:

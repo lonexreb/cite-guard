@@ -1,5 +1,5 @@
 [project]
-name = "citeguard"
+name = "cite-guard"
 version = "0.1.0"
 description = "Free, open, OpenAlex-native watchdog for retracted and problematic citations"
 readme = "README.md"
