@@ -52,6 +52,14 @@ def build_rw_id_map(
     return mapping
 
 
+def load_reverse_flagged_map(path: Path = ID_MAP_PATH) -> dict[str, str]:
+    """OpenAlex work ID -> flagged DOI, from the RW->OpenAlex map. Empty if absent."""
+    if not path.exists():
+        return {}
+    forward: dict[str, str | None] = json.loads(path.read_text())
+    return {oa_id: doi for doi, oa_id in forward.items() if oa_id}
+
+
 @dataclass(frozen=True, slots=True)
 class CitedFlag:
     citing_work_id: str
