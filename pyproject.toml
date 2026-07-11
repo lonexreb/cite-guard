@@ -1,5 +1,5 @@
 [project]
-name = "cite-guard"
+name = "retractguard"
 version = "0.1.0"
 description = "Free, open, OpenAlex-native watchdog for retracted and problematic citations"
 readme = "README.md"
@@ -37,7 +37,7 @@ Repository = "https://github.com/lonexreb/cite-guard"
 Issues = "https://github.com/lonexreb/cite-guard/issues"
 
 [project.scripts]
-citeguard-mcp = "citeguard.mcp_server:main"
+retractguard-mcp = "citeguard.mcp_server:main"
 
 [dependency-groups]
 dev = [

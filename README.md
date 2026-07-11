@@ -101,16 +101,16 @@ uv run python -m citeguard.mcp_server     # launch the MCP server locally
 ## Connect it as an MCP server
 
 CiteGuard exposes `get_editorial_status`, `check_references`, and `watch_institution`
-to any MCP client. After `pip install cite-guard` (or `uv tool install cite-guard`), the
-`citeguard-mcp` command launches the stdio server.
+to any MCP client. After `pip install retractguard` (or `uv tool install retractguard`),
+the `retractguard-mcp` command launches the stdio server.
 
 **Claude Desktop** — add to `claude_desktop_config.json`:
 
 ```json
 {
   "mcpServers": {
-    "citeguard": {
-      "command": "citeguard-mcp",
+    "retractguard": {
+      "command": "retractguard-mcp",
       "env": {
         "OPENALEX_API_KEY": "your-key",
         "CITEGUARD_MAILTO": "you@example.org"
@@ -120,9 +120,9 @@ to any MCP client. After `pip install cite-guard` (or `uv tool install cite-guar
 }
 ```
 
-**Cursor / other clients** — point them at the same `citeguard-mcp` command (stdio
+**Cursor / other clients** — point them at the same `retractguard-mcp` command (stdio
 transport). Running from a checkout instead of an install? Use
-`"command": "uv", "args": ["run", "citeguard-mcp"]` with `"cwd"` set to the repo.
+`"command": "uv", "args": ["run", "retractguard-mcp"]` with `"cwd"` set to the repo.
 
 On first call the server downloads the Retraction Watch dump (~65 MB, free) into
 `CITEGUARD_DATA_DIR` (default `./data`). Editorial-notice lookups (Retraction Watch,

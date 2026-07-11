@@ -1,6 +1,6 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
-  "name": "io.github.lonexreb/citeguard",
+  "name": "io.github.lonexreb/retractguard",
   "description": "Free, open, OpenAlex-native watchdog for retracted and problematic citations. Flags references that are retracted, corrected, or under an expression of concern, reconciling Retraction Watch, OpenAlex, and Crossref conservatively.",
   "version": "0.1.0",
   "repository": {
@@ -10,7 +10,7 @@
   "packages": [
     {
       "registryType": "pypi",
-      "identifier": "cite-guard",
+      "identifier": "retractguard",
       "version": "0.1.0",
       "transport": { "type": "stdio" },
       "environmentVariables": [
