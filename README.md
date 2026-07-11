@@ -1,5 +1,9 @@
 # CiteGuard
 
+[![PyPI](https://img.shields.io/pypi/v/retractguard)](https://pypi.org/project/retractguard/)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21304655.svg)](https://doi.org/10.5281/zenodo.21304655)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 **The free, open, OpenAlex-native watchdog for retracted and problematic citations.**
 
 CiteGuard tells you — and keeps telling you — when your references, your authors, or your
