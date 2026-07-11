@@ -132,6 +132,20 @@ On first call the server downloads the Retraction Watch dump (~65 MB, free) into
 `CITEGUARD_DATA_DIR` (default `./data`). Editorial-notice lookups (Retraction Watch,
 Crossref) need no key; OpenAlex corroboration and `watch_institution` do.
 
+## The web checker
+
+A thin web UI for people who don't live in an editor — paste DOIs or drop a `.bib` file,
+get a per-reference status table.
+
+```bash
+retractguard-web            # then open http://127.0.0.1:8000
+# or from a checkout: uv run python -m citeguard.web
+```
+
+Add `Accept: application/json` to `POST /check` to get the results as JSON instead of a
+table. It reuses the same conservative resolution logic as the MCP server — no separate
+code path, no separate trust model.
+
 ## Roadmap (MVP)
 
 1. `status.py` — the normalized editorial-status model (foundation)

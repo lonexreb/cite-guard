@@ -38,6 +38,7 @@ Issues = "https://github.com/lonexreb/cite-guard/issues"
 
 [project.scripts]
 retractguard-mcp = "citeguard.mcp_server:main"
+retractguard-web = "citeguard.web:main"
 
 [dependency-groups]
 dev = [

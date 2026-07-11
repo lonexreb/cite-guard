@@ -24,7 +24,7 @@ def wired_resources(rw_index: RWIndex, tmp_path: Path, monkeypatch) -> None:
     resources = srv.Resources(
         rw_index=rw_index, oa_client=oa, cr_client=cr, hijacked=None, data_dir=tmp_path
     )
-    monkeypatch.setattr(srv, "_resources", resources)
+    monkeypatch.setattr("citeguard.resources._resources", resources)
 
 
 async def test_tools_registered_and_status_round_trips(wired_resources) -> None:
