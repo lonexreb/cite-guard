@@ -102,6 +102,8 @@ uv run python -m evals.run                # run the eval harness (precision/reca
 uv run python -m citeguard.mcp_server     # launch the MCP server locally
 ```
 
+<!-- mcp-name: io.github.lonexreb/retractguard -->
+
 ## Connect it as an MCP server
 
 CiteGuard exposes `get_editorial_status`, `check_references`, and `watch_institution`

@@ -44,25 +44,47 @@ gh release create v0.1.0 --title "CiteGuard 0.1.0" --notes "First public release
 
 3. Add the DOI badge Zenodo gives you to the top of `README.md`.
 
-## 3. List on the MCP registry
+## 3. Automated release → PyPI + MCP registry (no tokens)
 
-Verify the current `server.json` schema at https://registry.modelcontextprotocol.io
-(the `$schema` URL and field names evolve), then publish with the official CLI:
+`.github/workflows/release.yml` fires on a **published GitHub release** (or manual
+`workflow_dispatch`) and does the whole chain over OIDC — no PyPI token, no interactive
+GitHub login:
+
+1. `uv build`
+2. Publish to PyPI via **Trusted Publishing** (`pypa/gh-action-pypi-publish`)
+3. Publish `server.json` to the **MCP registry** via `mcp-publisher login github-oidc`
+
+The MCP registry proves you own the PyPI package by requiring
+`mcp-name: io.github.lonexreb/retractguard` in the PyPI README (present in `README.md`),
+which is why PyPI must publish *before* the registry step.
+
+### One-time setup (required before the workflow can publish to PyPI)
+
+Configure a **Trusted Publisher** at
+https://pypi.org/manage/project/retractguard/settings/publishing/ (or, if the project
+UI differs, the "pending publisher" form) with:
+
+- **Owner:** `lonexreb`
+- **Repository:** `cite-guard`
+- **Workflow:** `release.yml`
+- **Environment:** *(leave blank)*
+
+Do **not** set a required environment on PyPI unless you also add `environment:` to the
+workflow. After this one-time step, every release publishes itself.
+
+> The MCP registry namespace `io.github.lonexreb/*` is authorized automatically by the
+> workflow's GitHub OIDC identity — nothing to configure.
+
+## 4. Cut a release
 
 ```bash
-# install mcp-publisher per the registry docs, authenticate via GitHub, then:
-mcp-publisher publish
+git tag -a v0.1.1 -m "..." && git push origin v0.1.1
+gh release create v0.1.1 --title "..." --notes "..."
 ```
 
-The registry validates that `server.json`'s PyPI package exists — do step 1 first.
-
-## 4. (Optional) PyPI Trusted Publishing via GitHub Actions
-
-Avoids storing a token: configure a Trusted Publisher on PyPI pointing at this repo +
-a `release.yml` workflow using `pypa/gh-action-pypi-publish` on tag push. Add when you
-want tagged releases to publish themselves.
+The `release.yml` workflow then publishes to PyPI and the MCP registry automatically.
 
 ## Version bumps
 
-Bump `version` in **three** places, keep them in sync: `pyproject.toml`,
-`server.json`, `CITATION.cff` (and `src/citeguard/__init__.py`).
+Bump `version` in **four** places, keep them in sync: `pyproject.toml`, `server.json`
+(top-level **and** the package entry), `CITATION.cff`, and `src/citeguard/__init__.py`.

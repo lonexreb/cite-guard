@@ -1,0 +1,45 @@
+name: Release
+
+# On a published GitHub release: build, publish to PyPI (OIDC Trusted
+# Publishing — no token), then publish to the MCP registry (OIDC — no token).
+# PyPI must publish first so the registry's package-ownership check (the
+# `mcp-name:` marker in the PyPI README) passes.
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write   # for BOTH PyPI Trusted Publishing and mcp github-oidc
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.11"
+
+      - name: Build sdist + wheel
+        run: uv build
+
+      - name: Publish to PyPI (Trusted Publishing)
+        uses: pypa/gh-action-pypi-publish@release/v1
+
+      - name: Install mcp-publisher
+        run: |
+          curl -sL "https://github.com/modelcontextprotocol/registry/releases/download/v1.7.9/mcp-publisher_linux_amd64.tar.gz" \
+            | tar xz mcp-publisher
+
+      - name: Validate server.json
+        run: ./mcp-publisher validate server.json
+
+      - name: Publish to MCP registry (GitHub OIDC)
+        run: |
+          ./mcp-publisher login github-oidc
+          ./mcp-publisher publish

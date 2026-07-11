@@ -3,7 +3,7 @@
   "name": "io.github.lonexreb/retractguard",
   "title": "CiteGuard",
   "description": "Open watchdog for retracted & problematic citations: Retraction Watch, OpenAlex, Crossref.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": {
     "url": "https://github.com/lonexreb/cite-guard",
     "source": "github"
@@ -12,7 +12,7 @@
     {
       "registryType": "pypi",
       "identifier": "retractguard",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "transport": { "type": "stdio" },
       "runtimeHint": "uvx",
       "environmentVariables": [
