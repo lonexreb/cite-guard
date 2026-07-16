@@ -1,0 +1,628 @@
+{
+  "corpus": "https://ror.org/027bh9e22",
+  "works_scanned": 36322,
+  "works_with_references": 27392,
+  "works_with_flagged_refs": 299,
+  "contamination_rate": 0.0109,
+  "total_flagged_citations": 342,
+  "post_notice_citations": 145,
+  "grace_days": 365,
+  "by_kind": {
+    "retracted": 244,
+    "corrected": 54,
+    "expression_of_concern": 39,
+    "reinstated": 5
+  },
+  "by_timing": {
+    "concurrent": 53,
+    "pre_notice": 144,
+    "post_notice": 145
+  },
+  "most_cited_flagged": [
+    {
+      "doi": "10.1186/gb-2013-14-10-r115",
+      "kind": "corrected",
+      "times_cited": 12
+    },
+    {
+      "doi": "10.1038/nature23272",
+      "kind": "retracted",
+      "times_cited": 9
+    },
+    {
+      "doi": "10.1093/mnras/stt2250",
+      "kind": "corrected",
+      "times_cited": 9
+    },
+    {
+      "doi": "10.1093/mnras/sty1889",
+      "kind": "retracted",
+      "times_cited": 8
+    },
+    {
+      "doi": "10.1038/ncb3192",
+      "kind": "retracted",
+      "times_cited": 8
+    },
+    {
+      "doi": "10.2807/1560-7917.es.2020.25.3.2000045",
+      "kind": "expression_of_concern",
+      "times_cited": 8
+    },
+    {
+      "doi": "10.1093/mnras/stw2434",
+      "kind": "retracted",
+      "times_cited": 8
+    },
+    {
+      "doi": "10.1016/j.euroneuro.2015.03.015",
+      "kind": "retracted",
+      "times_cited": 5
+    },
+    {
+      "doi": "10.1016/s0140-6736(20)32656-8",
+      "kind": "retracted",
+      "times_cited": 5
+    },
+    {
+      "doi": "10.1098/rsos.180526",
+      "kind": "expression_of_concern",
+      "times_cited": 5
+    },
+    {
+      "doi": "10.1016/j.heliyon.2024.e33328",
+      "kind": "retracted",
+      "times_cited": 4
+    },
+    {
+      "doi": "10.1371/journal.pone.0010532",
+      "kind": "retracted",
+      "times_cited": 4
+    },
+    {
+      "doi": "10.1073/pnas.1113421108",
+      "kind": "retracted",
+      "times_cited": 3
+    },
+    {
+      "doi": "10.1016/j.cortex.2017.03.017",
+      "kind": "expression_of_concern",
+      "times_cited": 3
+    },
+    {
+      "doi": "10.3389/fpsyg.2014.00561",
+      "kind": "retracted",
+      "times_cited": 3
+    },
+    {
+      "doi": "10.1074/jbc.m112.442939",
+      "kind": "retracted",
+      "times_cited": 3
+    },
+    {
+      "doi": "10.1139/cjfr-2013-0108",
+      "kind": "retracted",
+      "times_cited": 3
+    },
+    {
+      "doi": "10.1177/0146167211398138",
+      "kind": "expression_of_concern",
+      "times_cited": 3
+    },
+    {
+      "doi": "10.1242/dev.052456",
+      "kind": "corrected",
+      "times_cited": 3
+    },
+    {
+      "doi": "10.1038/s41556-021-00702-0",
+      "kind": "retracted",
+      "times_cited": 3
+    }
+  ],
+  "worst_works": [
+    {
+      "work_id": "https://openalex.org/W3108936441",
+      "doi": "10.1080/15548627.2020.1797280",
+      "title": "Guidelines for the use and interpretation of assays for monitoring autophagy (4th edition)<sup>1</sup>",
+      "flagged_reference_count": 11,
+      "flagged_references": [
+        {
+          "doi": "10.1111/jpi.12247",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -3.46
+        },
+        {
+          "doi": "10.1038/ncb3192",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -3.17
+        },
+        {
+          "doi": "10.1038/ncb2611",
+          "kind": "corrected",
+          "timing": "post_notice",
+          "gap_years": 5.48
+        },
+        {
+          "doi": "10.1073/pnas.1113421108",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -4.59
+        },
+        {
+          "doi": "10.1038/emboj.2010.237",
+          "kind": "corrected",
+          "timing": "pre_notice",
+          "gap_years": -1.83
+        },
+        {
+          "doi": "10.1242/jcs.144816",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -1.56
+        },
+        {
+          "doi": "10.1038/nature17950",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -1.66
+        },
+        {
+          "doi": "10.1172/jci91814",
+          "kind": "expression_of_concern",
+          "timing": "post_notice",
+          "gap_years": 1.68
+        },
+        {
+          "doi": "10.7554/elife.34532",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -1.66
+        },
+        {
+          "doi": "10.1159/000491718",
+          "kind": "retracted",
+          "timing": "concurrent",
+          "gap_years": 0.25
+        },
+        {
+          "doi": "10.1016/j.cell.2019.05.056",
+          "kind": "corrected",
+          "timing": "concurrent",
+          "gap_years": 0.06
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W4414486019",
+      "doi": "10.1002/asi.70028",
+      "title": "Can social media provide early warning of retraction? Evidence from critical tweets identified by human annotation and large language models",
+      "flagged_reference_count": 6,
+      "flagged_references": [
+        {
+          "doi": "10.1056/nejmoa2007621",
+          "kind": "retracted",
+          "timing": "post_notice",
+          "gap_years": 5.3
+        },
+        {
+          "doi": "10.3390/vaccines9070693",
+          "kind": "retracted",
+          "timing": "post_notice",
+          "gap_years": 4.23
+        },
+        {
+          "doi": "10.1088/1402-4896/aceb40",
+          "kind": "retracted",
+          "timing": "post_notice",
+          "gap_years": 2.03
+        },
+        {
+          "doi": "10.3389/fcell.2023.1339390",
+          "kind": "retracted",
+          "timing": "post_notice",
+          "gap_years": 1.6
+        },
+        {
+          "doi": "10.1016/j.surfin.2024.104081",
+          "kind": "retracted",
+          "timing": "post_notice",
+          "gap_years": 1.31
+        },
+        {
+          "doi": "10.1097/md.0000000000037589",
+          "kind": "retracted",
+          "timing": "post_notice",
+          "gap_years": 1.2
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W4294792997",
+      "doi": "10.3390/genes13091585",
+      "title": "Crosstalk between Hypoxia and Extracellular Matrix in the Tumor Microenvironment in Breast Cancer",
+      "flagged_reference_count": 4,
+      "flagged_references": [
+        {
+          "doi": "10.1158/0008-5472.can-12-3963",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -2.0
+        },
+        {
+          "doi": "10.1158/0008-5472.can-10-2868",
+          "kind": "corrected",
+          "timing": "post_notice",
+          "gap_years": 2.92
+        },
+        {
+          "doi": "10.1158/1541-7786.mcr-12-0629",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -1.08
+        },
+        {
+          "doi": "10.1074/jbc.m112.442939",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -0.94
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W4386034852",
+      "doi": "10.1016/j.eehl.2023.08.002",
+      "title": "A systematic review of the impacts of exposure to micro- and nano-plastics on human tissue accumulation and health",
+      "flagged_reference_count": 3,
+      "flagged_references": [
+        {
+          "doi": "10.1016/j.chemosphere.2019.124688",
+          "kind": "retracted",
+          "timing": "post_notice",
+          "gap_years": 3.64
+        },
+        {
+          "doi": "10.1016/j.scitotenv.2022.155849",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -1.29
+        },
+        {
+          "doi": "10.1016/j.scitotenv.2022.155833",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -1.24
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W4206257013",
+      "doi": "10.3389/fcimb.2021.809121",
+      "title": "LAPped in Proof: LC3\u2010Associated Phagocytosis and the Arms Race Against Bacterial Pathogens",
+      "flagged_reference_count": 3,
+      "flagged_references": [
+        {
+          "doi": "10.1038/ncb3192",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -2.17
+        },
+        {
+          "doi": "10.1073/pnas.1113421108",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -3.58
+        },
+        {
+          "doi": "10.1038/nature17950",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -0.66
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W3137226137",
+      "doi": "10.3389/fnhum.2020.568051",
+      "title": "International Consensus Based Review and Recommendations for Minimum Reporting Standards in Research on Transcutaneous Vagus Nerve Stimulation (Version 2020)",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.1016/j.euroneuro.2015.03.015",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -1.43
+        },
+        {
+          "doi": "10.1016/j.cortex.2017.03.017",
+          "kind": "expression_of_concern",
+          "timing": "pre_notice",
+          "gap_years": -1.05
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W3100152956",
+      "doi": "10.1002/mds.28396",
+      "title": "The Role of Cholesterol in <scp>\u03b1\u2010Synuclein</scp> and Lewy Body Pathology in <scp><i>GBA1</i></scp> Parkinson's Disease",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.1111/j.1471-4159.2011.07497.x",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -3.9
+        },
+        {
+          "doi": "10.1186/s12868-018-0420-5",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -3.96
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W3086288671",
+      "doi": "10.1177/1745691620964106",
+      "title": "Putting the Self in Self-Correction: Findings From the Loss-of-Confidence Project",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.1177/0956797615609900",
+          "kind": "retracted",
+          "timing": "post_notice",
+          "gap_years": 5.07
+        },
+        {
+          "doi": "10.3758/s13423-018-1489-7",
+          "kind": "retracted",
+          "timing": "concurrent",
+          "gap_years": 0.99
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W4361273612",
+      "doi": "10.15252/embj.2022112806",
+      "title": "LncRNA LITATS1 suppresses TGF\u2010\u03b2\u2010induced EMT and cancer cell plasticity by potentiating T\u03b2RI degradation",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.1074/jbc.m114.610915",
+          "kind": "corrected",
+          "timing": "post_notice",
+          "gap_years": 6.44
+        },
+        {
+          "doi": "10.1080/15384101.2019.1706921",
+          "kind": "expression_of_concern",
+          "timing": "concurrent",
+          "gap_years": 0.04
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W4311089444",
+      "doi": "10.1016/j.envres.2022.114946",
+      "title": "Eco-friendly synthesis of Ag-NPs using Endostemon viscosus (Lamiaceae): Antibacterial, antioxidant, larvicidal, photocatalytic dye degradation activity and toxicity in zebrafish embryos",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.1016/j.scitotenv.2019.134867",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -2.03
+        },
+        {
+          "doi": "10.1016/j.envres.2021.111987",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -2.78
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W3016881808",
+      "doi": "10.1016/j.neuropsychologia.2020.107465",
+      "title": "Transcutaneous vagus nerve stimulation modulates attentional resource deployment towards social cues",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.1016/j.euroneuro.2015.03.015",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -2.37
+        },
+        {
+          "doi": "10.1016/j.cortex.2017.03.017",
+          "kind": "expression_of_concern",
+          "timing": "pre_notice",
+          "gap_years": -1.99
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W3037092308",
+      "doi": "10.1016/b978-0-12-816400-6.00006-7",
+      "title": "Altered states of consciousness and creativity",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.1016/j.concog.2015.04.012",
+          "kind": "retracted",
+          "timing": "post_notice",
+          "gap_years": 4.63
+        },
+        {
+          "doi": "10.1016/j.concog.2015.08.006",
+          "kind": "retracted",
+          "timing": "post_notice",
+          "gap_years": 4.34
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W3146981944",
+      "doi": "10.1002/eji.202048944",
+      "title": "Fa(c)t checking: How fatty acids shape metabolism and function of macrophages and dendritic cells",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.1172/jci78253",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -1.95
+        },
+        {
+          "doi": "10.1038/nm.4153",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -2.65
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W3007825774",
+      "doi": "10.1525/collabra.294",
+      "title": "When Cheating is an Honest Mistake: A Critical Evaluation of the Matrix Task as a Measure of Dishonesty",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.1177/0146167211398138",
+          "kind": "expression_of_concern",
+          "timing": "pre_notice",
+          "gap_years": -5.66
+        },
+        {
+          "doi": "10.1073/pnas.1209746109",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -1.7
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W3006095629",
+      "doi": "10.1007/s00426-020-01301-8",
+      "title": "Embodied self-other overlap in romantic love: a review and integrative perspective",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.3389/fpsyg.2014.00561",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -4.0
+        },
+        {
+          "doi": "10.1002/ejsp.656",
+          "kind": "expression_of_concern",
+          "timing": "post_notice",
+          "gap_years": 3.54
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W3178803029",
+      "doi": "10.3758/s13415-021-00928-3",
+      "title": "Recognizing emotions in bodies: Vagus nerve stimulation enhances recognition of anger while impairing sadness",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.1016/j.euroneuro.2015.03.015",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -1.11
+        },
+        {
+          "doi": "10.1016/j.cortex.2017.03.017",
+          "kind": "expression_of_concern",
+          "timing": "pre_notice",
+          "gap_years": -0.74
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W4380151737",
+      "doi": "10.1016/j.envpol.2023.122010",
+      "title": "Comparative physiological and metabolomics analyses using Ag\u23afNPs and HAS31 (PGPR) to alleviate Cr stress in barley (Hordeum vulgare L.)",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.1371/journal.pone.0262140",
+          "kind": "retracted",
+          "timing": "concurrent",
+          "gap_years": 0.85
+        },
+        {
+          "doi": "10.3389/fpls.2022.973782",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -1.0
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W4386895033",
+      "doi": "10.3389/fcell.2023.1165581",
+      "title": "Cigarette smoke restricts the ability of mesenchymal cells to support lung epithelial organoid formation",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.1164/rccm.200903-0324oc",
+          "kind": "retracted",
+          "timing": "post_notice",
+          "gap_years": 7.63
+        },
+        {
+          "doi": "10.18632/oncotarget.20768",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -2.58
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W4405597245",
+      "doi": "10.1016/j.bir.2024.12.002",
+      "title": "Stock price prediction using the Sand Cat Swarm Optimization and an improved deep Long Short Term Memory network",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.3233/jifs-221919",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -0.38
+        },
+        {
+          "doi": "10.1016/j.heliyon.2024.e33328",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -1.27
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W3161801203",
+      "doi": "10.5334/cpsy.65",
+      "title": "Multi-Round Trust Game Quantifies Inter-Individual Differences in Social Exchange from Adolescence to Adulthood",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.1016/0022-4405(78)90004-3",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -3.99
+        },
+        {
+          "doi": "10.1073/pnas.1018601108",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -4.33
+        }
+      ]
+    }
+  ],
+  "notes": []
+}

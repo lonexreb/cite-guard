@@ -72,41 +72,47 @@ uv run python -m citeguard.scan --ror https://ror.org/013cjyk83 --since 2015-01-
 - **Conservative by construction.** Ambiguous cases are excluded from flagged counts, which
   pushes the estimate down, not up.
 
-## Results — first run: Maastricht University, 2020–present
+## Results — pilot across two universities, 2020–present
 
-A pilot scan of one OpenAlex-adopting institution. Raw outputs are committed alongside
-this write-up (`study/maastricht-2020.json`, `study/maastricht-2020.md`); rerun with the
-command above to reproduce.
+A pilot across two independent OpenAlex-adopting institutions. Raw outputs are committed
+alongside this write-up (`study/*-2020.json` / `.md`); rerun with the command above to
+reproduce. All works published 2020-01-01 onward; grace window 365 days.
 
-- **Corpus:** Maastricht University (`ROR 02jz4aj89`), works published 2020-01-01 onward.
-- **Works scanned:** 45,307 (34,822 had references available in OpenAlex).
-- **Works citing flagged research:** 712 — a **2.0% contamination rate** among works with
-  references.
-- **Total flagged citations:** 798, by editorial status:
-  retracted 522 · expression of concern 119 · corrected 107 · reinstated 50.
-- **Citation timing (grace window 365 days):**
-  - post-notice **402 (50%)** — cited more than a year after the editorial notice,
-  - pre-notice 271 (blameless — cited before the notice existed),
-  - concurrent 125 (within the propagation window).
+| Institution | Works w/ refs | Contaminated works | Rate | Flagged citations | Post-notice |
+|---|--:|--:|--:|--:|--:|
+| Maastricht University (`02jz4aj89`) | 34,822 | 712 | **2.0%** | 798 | **402 (50%)** |
+| Leiden University (`027bh9e22`) | 27,392 | 299 | **1.1%** | 342 | **145 (42%)** |
 
-**The headline:** half of all flagged citations were made well after the notice. Pre-notice
-citations are blameless and are reported separately; the 402 post-notice citations are the
-measurable problem — and would be invisible to a tool that only checks whether a cited paper
-is *currently* flagged, without asking *when* it was cited.
+Editorial-status breakdown of flagged citations:
 
-**Conservative labeling, demonstrated on real data:** the Corman-Drosten COVID PCR paper
-(`10.2807/1560-7917.es.2020.25.3.2000045`) is among the most-cited flagged papers in this
-corpus (27 citations) — and CiteGuard labels it *expression of concern*, **never retracted**.
-This is the exact false positive a single-boolean tool produces; here it is avoided on live
-data, not just in the test suite.
+| Institution | Retracted | Expression of concern | Corrected | Reinstated |
+|---|--:|--:|--:|--:|
+| Maastricht | 522 | 119 | 107 | 50 |
+| Leiden | 244 | 39 | 54 | 5 |
 
-### Caveats specific to this run
+**The pattern holds across both sites.** Contamination sits in the low single-digit percent
+(1–2% of works with references), retracted papers dominate the flagged citations, and
+**roughly half of every flagged citation was made well after the editorial notice** — 50% at
+Maastricht, 42% at Leiden. Pre-notice citations are reported separately and treated as
+blameless; the post-notice count is the measurable problem, and it would be invisible to any
+tool that checks only whether a cited paper is *currently* flagged, without asking *when* it
+was cited.
+
+**Conservative labeling, demonstrated on live data:** the Corman-Drosten COVID PCR paper
+(`10.2807/1560-7917.es.2020.25.3.2000045`) is among the most-cited flagged papers at
+Maastricht (27 citations) — and CiteGuard labels it *expression of concern*, **never
+retracted**. This is the exact false positive a single-boolean tool produces; here it is
+avoided on real data, not just in the test suite.
+
+### Caveats
 
 - Numbers are a **lower bound** (see Limitations): OpenAlex reference coverage is incomplete,
   and Retraction Watch does not carry every notice.
-- This is a single institution chosen as a methodology pilot; it is **not** a claim that
-  Maastricht is unusual — a ~2% contamination rate is consistent with an ordinary research
-  university and should be read as a baseline, not an indictment.
+- Two institutions are a **pilot, not a survey.** Both are ordinary European research
+  universities; a 1–2% rate should be read as a baseline, not an indictment of either. More
+  institutions were queued for this run but OpenAlex's keyless *polite pool* rate-limited the
+  batch after two full corpus scans plus the one-time 62k-DOI ID-map build — additional sites
+  need an API key or a quota reset, not more retries.
 - All figures describe citation *hygiene*, not author conduct. No individual work or author
   is being accused of anything.
 
@@ -114,5 +120,5 @@ data, not just in the test suite.
 
 - Code + eval harness: this repository (MIT), archived at
   [10.5281/zenodo.21304655](https://doi.org/10.5281/zenodo.21304655).
-- Scan outputs for the run above: [`study/maastricht-2020.json`](study/maastricht-2020.json)
-  and [`study/maastricht-2020.md`](study/maastricht-2020.md).
+- Scan outputs: [`study/maastricht-2020.md`](study/maastricht-2020.md) ·
+  [`study/leiden-2020.md`](study/leiden-2020.md) (with `.json` alongside each).
