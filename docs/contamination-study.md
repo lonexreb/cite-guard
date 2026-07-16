@@ -34,6 +34,13 @@ in `../CLAUDE.md` and `src/citeguard/status.py`).
 
 - **Contamination rate** — share of works (with references) that cite ≥1 flagged paper.
 - **Total flagged citations** and the **breakdown by editorial status**.
+- **Citation timing** relative to the notice — the key distinction:
+  - *pre-notice* (cited before the notice existed; blameless),
+  - *concurrent* (within a configurable grace window while the notice propagates),
+  - *post-notice* (cited well after the notice — the citations that should not happen).
+  The headline figure is **post-notice citations**: citing a paper long after it was
+  flagged is the measurable problem, and separating it from pre-notice citation is what
+  keeps the study fair to authors.
 - **Most-cited flagged papers** in the corpus (the repeat offenders).
 - **Worst-offending works** (most flagged references in a single bibliography).
 
@@ -45,9 +52,9 @@ uv run python -c "from pathlib import Path; from citeguard.resources import get_
 from citeguard.watch import build_rw_id_map; r=get_resources(); \
 build_rw_id_map(r.rw_index, r.oa_client)"
 
-# scan a corpus
+# scan a corpus (grace-days sets the post-notice propagation window; default 365)
 uv run python -m citeguard.scan --ror https://ror.org/013cjyk83 --since 2015-01-01 \
-  --out report.json --markdown report.md
+  --grace-days 365 --out report.json --markdown report.md
 ```
 
 ## Limitations (state them plainly)
@@ -55,8 +62,13 @@ uv run python -m citeguard.scan --ror https://ror.org/013cjyk83 --since 2015-01-
 - **Coverage floors, not ceilings.** OpenAlex may lack some references or DOIs; Retraction
   Watch does not cover every notice. Reported contamination is a **lower bound**.
 - **DOI-keyed.** References without a resolvable DOI/OpenAlex ID are not checked.
-- **Timing.** A work citing a paper *before* its retraction is still counted — the citation
-  is contaminated regardless of intent; we do not infer authorial fault.
+- **Timing is scored, not assumed.** Each citation is classified pre-/concurrent/post-notice
+  against the notice date, with a configurable grace window for propagation. We report the
+  breakdown and never infer authorial fault — a pre-notice citation was blameless, and a
+  post-notice one is a hygiene finding about the citing work, not an accusation.
+- **Grace window is a judgement call.** The default 365-day propagation window is a
+  defensible starting point, not a validated constant; report the value used and test
+  sensitivity to it.
 - **Conservative by construction.** Ambiguous cases are excluded from flagged counts, which
   pushes the estimate down, not up.
 
@@ -68,6 +80,8 @@ TODO — run the scan on the target corpus/corpora and paste `report.md` figures
 - Works scanned: TODO
 - Contamination rate: TODO%
 - Total flagged citations: TODO (retracted TODO / corrected TODO / EoC TODO)
+- **Post-notice citations: TODO** (of which TODO retracted) — grace window TODO days
+- Timing split: pre-notice TODO / concurrent TODO / post-notice TODO
 - Most-cited flagged papers: TODO
 
 ## Artifacts

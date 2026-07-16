@@ -26,7 +26,16 @@ from typing import Any
 from citeguard.resources import get_resources
 from citeguard.retractionwatch import RWIndex, rw_signals
 from citeguard.status import Source, normalize_doi, resolve
+from citeguard.timing import DEFAULT_GRACE_DAYS, CitationTiming, classify_citation_timing
 from citeguard.watch import ID_MAP_PATH, load_reverse_flagged_map
+
+
+@dataclass(frozen=True, slots=True)
+class FlaggedRef:
+    doi: str
+    kind: str
+    timing: str  # CitationTiming value
+    gap_years: float | None  # signed: negative = cited before the notice
 
 
 @dataclass
@@ -34,7 +43,7 @@ class WorkContamination:
     work_id: str
     doi: str | None
     title: str | None
-    flagged_refs: list[tuple[str, str]]  # (flagged_doi, kind)
+    flagged_refs: list[FlaggedRef]
 
 
 @dataclass
@@ -45,14 +54,21 @@ class ContaminationReport:
     works_with_flagged_refs: int
     total_flagged_citations: int
     by_kind: dict[str, int]
+    by_timing: dict[str, int]  # pre_notice / concurrent / post_notice / unknown
     most_cited_flagged: list[tuple[str, str, int]]  # (doi, kind, times_cited)
     worst_works: list[WorkContamination]
+    grace_days: int = DEFAULT_GRACE_DAYS
     notes: list[str] = field(default_factory=list)
 
     @property
     def contamination_rate(self) -> float:
         base = self.works_with_references or 1
         return self.works_with_flagged_refs / base
+
+    @property
+    def post_notice_citations(self) -> int:
+        """Citations made well after the notice — the ones that should not happen."""
+        return self.by_timing.get(CitationTiming.POST_NOTICE.value, 0)
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -62,7 +78,10 @@ class ContaminationReport:
             "works_with_flagged_refs": self.works_with_flagged_refs,
             "contamination_rate": round(self.contamination_rate, 4),
             "total_flagged_citations": self.total_flagged_citations,
+            "post_notice_citations": self.post_notice_citations,
+            "grace_days": self.grace_days,
             "by_kind": self.by_kind,
+            "by_timing": self.by_timing,
             "most_cited_flagged": [
                 {"doi": d, "kind": k, "times_cited": n} for d, k, n in self.most_cited_flagged
             ],
@@ -72,7 +91,15 @@ class ContaminationReport:
                     "doi": w.doi,
                     "title": w.title,
                     "flagged_reference_count": len(w.flagged_refs),
-                    "flagged_references": [{"doi": d, "kind": k} for d, k in w.flagged_refs],
+                    "flagged_references": [
+                        {
+                            "doi": r.doi,
+                            "kind": r.kind,
+                            "timing": r.timing,
+                            "gap_years": r.gap_years,
+                        }
+                        for r in w.flagged_refs
+                    ],
                 }
                 for w in self.worst_works
             ],
@@ -88,11 +115,22 @@ class ContaminationReport:
             f"- Works citing flagged research: **{self.works_with_flagged_refs}** "
             f"(**{self.contamination_rate:.1%}** of works with references)",
             f"- Total flagged citations: **{self.total_flagged_citations}**",
+            f"- **Post-notice citations: {self.post_notice_citations}** "
+            f"(cited > {self.grace_days} days after the editorial notice)",
             "",
             "## By editorial status",
         ]
         for kind, n in sorted(self.by_kind.items(), key=lambda kv: -kv[1]):
             lines.append(f"- {kind.replace('_', ' ')}: {n}")
+        lines += ["", "## By citation timing (relative to the notice)"]
+        _timing_label = {
+            "pre_notice": "before the notice (blameless)",
+            "concurrent": f"within {self.grace_days}d of the notice (propagation window)",
+            "post_notice": "after the notice",
+            "unknown": "date unavailable",
+        }
+        for t, n in sorted(self.by_timing.items(), key=lambda kv: -kv[1]):
+            lines.append(f"- {_timing_label.get(t, t)}: {n}")
         lines += ["", "## Most-cited flagged papers"]
         for doi, kind, n in self.most_cited_flagged:
             lines.append(f"- `{doi}` ({kind.replace('_', ' ')}) — cited by {n} work(s)")
@@ -112,40 +150,50 @@ def scan_works(
     flagged_id_to_doi: dict[str, str],
     corpus: str,
     top_n: int = 20,
+    grace_days: int = DEFAULT_GRACE_DAYS,
 ) -> ContaminationReport:
     """Local join: intersect each work's references with the flagged-ID set.
 
     Pure and offline — no network. `flagged_id_to_doi` maps OpenAlex work IDs
     (of flagged papers) to their DOIs; build it once via
-    citeguard.watch.build_rw_id_map, then reverse it.
+    citeguard.watch.build_rw_id_map, then reverse it. Each flagged citation is
+    also scored by timing against the notice date (see citeguard.timing).
     """
-    kind_cache: dict[str, str] = {}
+    # doi -> (kind, notice_date-as-str-or-None); notice date drives timing.
+    resolved_cache: dict[str, tuple[str, str | None]] = {}
 
-    def kind_of(doi: str) -> str:
-        if doi not in kind_cache:
+    def resolve_flagged(doi: str) -> tuple[str, str | None]:
+        if doi not in resolved_cache:
             status = resolve(doi, rw_signals(rw_index[doi]), frozenset({Source.RETRACTION_WATCH}))
-            kind_cache[doi] = status.kind.value
-        return kind_cache[doi]
+            notice = status.date.isoformat() if status.date else None
+            resolved_cache[doi] = (status.kind.value, notice)
+        return resolved_cache[doi]
 
     contaminated: list[WorkContamination] = []
     with_refs = 0
     cited_counter: Counter[str] = Counter()
     by_kind: Counter[str] = Counter()
+    by_timing: Counter[str] = Counter()
     total = 0
 
     for work in works:
         refs = work.get("referenced_works") or []
         if refs:
             with_refs += 1
-        flagged: list[tuple[str, str]] = []
+        citing_date = work.get("publication_date")
+        flagged: list[FlaggedRef] = []
         for ref_id in refs:
             flagged_doi = flagged_id_to_doi.get(ref_id)
             if flagged_doi is None or flagged_doi not in rw_index:
                 continue
-            k = kind_of(flagged_doi)
-            flagged.append((flagged_doi, k))
+            kind, notice_date = resolve_flagged(flagged_doi)
+            timing, gap_years = classify_citation_timing(citing_date, notice_date, grace_days)
+            flagged.append(
+                FlaggedRef(doi=flagged_doi, kind=kind, timing=timing.value, gap_years=gap_years)
+            )
             cited_counter[flagged_doi] += 1
-            by_kind[k] += 1
+            by_kind[kind] += 1
+            by_timing[timing.value] += 1
             total += 1
         if flagged:
             contaminated.append(
@@ -157,7 +205,9 @@ def scan_works(
                 )
             )
 
-    most_cited = [(doi, kind_of(doi), n) for doi, n in cited_counter.most_common(top_n)]
+    most_cited = [
+        (doi, resolve_flagged(doi)[0], n) for doi, n in cited_counter.most_common(top_n)
+    ]
     worst = sorted(contaminated, key=lambda w: -len(w.flagged_refs))[:top_n]
 
     return ContaminationReport(
@@ -167,8 +217,10 @@ def scan_works(
         works_with_flagged_refs=len(contaminated),
         total_flagged_citations=total,
         by_kind=dict(by_kind),
+        by_timing=dict(by_timing),
         most_cited_flagged=most_cited,
         worst_works=worst,
+        grace_days=grace_days,
     )
 
 
@@ -178,6 +230,7 @@ def scan_institution(
     *,
     id_map_path: Path = ID_MAP_PATH,
     top_n: int = 20,
+    grace_days: int = DEFAULT_GRACE_DAYS,
 ) -> ContaminationReport:
     """Fetch an institution's works (cheap list pages) and scan them locally."""
     r = get_resources()
@@ -189,7 +242,9 @@ def scan_institution(
             "nothing. Build it once with citeguard.watch.build_rw_id_map."
         )
     works = list(r.oa_client.list_institution_works(ror, from_publication_date=since))
-    report = scan_works(works, r.rw_index, flagged_id_to_doi, corpus=ror, top_n=top_n)
+    report = scan_works(
+        works, r.rw_index, flagged_id_to_doi, corpus=ror, top_n=top_n, grace_days=grace_days
+    )
     report.notes.extend(notes)
     return report
 
@@ -200,12 +255,18 @@ def _main(argv: list[str] | None = None) -> int:
     p.add_argument("--since", help="Only works published on/after this YYYY-MM-DD")
     p.add_argument("--out", type=Path, help="Write the JSON report here")
     p.add_argument("--markdown", type=Path, help="Write a markdown summary here")
+    p.add_argument(
+        "--grace-days",
+        type=int,
+        default=DEFAULT_GRACE_DAYS,
+        help="Days after a notice still treated as propagation window, not post-notice",
+    )
     args = p.parse_args(argv)
 
     if not args.ror:
         p.error("provide --ror (DOI-list mode: import scan_works directly)")
 
-    report = scan_institution(args.ror, args.since)
+    report = scan_institution(args.ror, args.since, grace_days=args.grace_days)
     if args.out:
         args.out.write_text(json.dumps(report.to_dict(), indent=2))
     if args.markdown:
