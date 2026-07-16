@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/banner.svg" alt="CiteGuard — the open watchdog for retracted and problematic citations" width="100%">
+</p>
+
 # CiteGuard
 
 [![PyPI](https://img.shields.io/pypi/v/retractguard)](https://pypi.org/project/retractguard/)
