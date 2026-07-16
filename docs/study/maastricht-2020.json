@@ -1,0 +1,652 @@
+{
+  "corpus": "https://ror.org/02jz4aj89",
+  "works_scanned": 45307,
+  "works_with_references": 34822,
+  "works_with_flagged_refs": 712,
+  "contamination_rate": 0.0204,
+  "total_flagged_citations": 798,
+  "post_notice_citations": 402,
+  "grace_days": 365,
+  "by_kind": {
+    "retracted": 522,
+    "corrected": 107,
+    "expression_of_concern": 119,
+    "reinstated": 50
+  },
+  "by_timing": {
+    "pre_notice": 271,
+    "post_notice": 402,
+    "concurrent": 125
+  },
+  "most_cited_flagged": [
+    {
+      "doi": "10.1186/gb-2013-14-10-r115",
+      "kind": "corrected",
+      "times_cited": 32
+    },
+    {
+      "doi": "10.2807/1560-7917.es.2020.25.3.2000045",
+      "kind": "expression_of_concern",
+      "times_cited": 27
+    },
+    {
+      "doi": "10.1016/j.hrthm.2016.05.028",
+      "kind": "reinstated",
+      "times_cited": 26
+    },
+    {
+      "doi": "10.1016/s0140-6736(20)32656-8",
+      "kind": "retracted",
+      "times_cited": 26
+    },
+    {
+      "doi": "10.1016/j.annonc.2020.04.478",
+      "kind": "reinstated",
+      "times_cited": 13
+    },
+    {
+      "doi": "10.1056/nejmoa2007621",
+      "kind": "retracted",
+      "times_cited": 13
+    },
+    {
+      "doi": "10.1093/jnci/djac015",
+      "kind": "expression_of_concern",
+      "times_cited": 10
+    },
+    {
+      "doi": "10.1016/s0140-6736(20)31180-6",
+      "kind": "retracted",
+      "times_cited": 9
+    },
+    {
+      "doi": "10.1007/s00213-019-05249-5",
+      "kind": "retracted",
+      "times_cited": 8
+    },
+    {
+      "doi": "10.1056/nejmoa1602489",
+      "kind": "corrected",
+      "times_cited": 8
+    },
+    {
+      "doi": "10.1038/s41593-019-0430-3",
+      "kind": "retracted",
+      "times_cited": 7
+    },
+    {
+      "doi": "10.5465/amj.2010.54533233",
+      "kind": "corrected",
+      "times_cited": 7
+    },
+    {
+      "doi": "10.1093/ecco-jcc/jjx008",
+      "kind": "expression_of_concern",
+      "times_cited": 7
+    },
+    {
+      "doi": "10.1016/j.eng.2020.03.007",
+      "kind": "retracted",
+      "times_cited": 6
+    },
+    {
+      "doi": "10.1001/jamainternmed.2018.3713",
+      "kind": "retracted",
+      "times_cited": 6
+    },
+    {
+      "doi": "10.1155/2021/6635552",
+      "kind": "retracted",
+      "times_cited": 5
+    },
+    {
+      "doi": "10.1192/bjo.2018.12",
+      "kind": "retracted",
+      "times_cited": 5
+    },
+    {
+      "doi": "10.1093/ecco-jcc/jjw169",
+      "kind": "expression_of_concern",
+      "times_cited": 5
+    },
+    {
+      "doi": "10.1007/s00213-020-05548-2",
+      "kind": "retracted",
+      "times_cited": 4
+    },
+    {
+      "doi": "10.1101/cshperspect.a033415",
+      "kind": "retracted",
+      "times_cited": 4
+    }
+  ],
+  "worst_works": [
+    {
+      "work_id": "https://openalex.org/W3108936441",
+      "doi": "10.1080/15548627.2020.1797280",
+      "title": "Guidelines for the use and interpretation of assays for monitoring autophagy (4th edition)<sup>1</sup>",
+      "flagged_reference_count": 11,
+      "flagged_references": [
+        {
+          "doi": "10.1111/jpi.12247",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -3.46
+        },
+        {
+          "doi": "10.1038/ncb3192",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -3.17
+        },
+        {
+          "doi": "10.1038/ncb2611",
+          "kind": "corrected",
+          "timing": "post_notice",
+          "gap_years": 5.48
+        },
+        {
+          "doi": "10.1073/pnas.1113421108",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -4.59
+        },
+        {
+          "doi": "10.1038/emboj.2010.237",
+          "kind": "corrected",
+          "timing": "pre_notice",
+          "gap_years": -1.83
+        },
+        {
+          "doi": "10.1242/jcs.144816",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -1.56
+        },
+        {
+          "doi": "10.1038/nature17950",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -1.66
+        },
+        {
+          "doi": "10.1172/jci91814",
+          "kind": "expression_of_concern",
+          "timing": "post_notice",
+          "gap_years": 1.68
+        },
+        {
+          "doi": "10.7554/elife.34532",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -1.66
+        },
+        {
+          "doi": "10.1159/000491718",
+          "kind": "retracted",
+          "timing": "concurrent",
+          "gap_years": 0.25
+        },
+        {
+          "doi": "10.1016/j.cell.2019.05.056",
+          "kind": "corrected",
+          "timing": "concurrent",
+          "gap_years": 0.06
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W3215586478",
+      "doi": "10.3389/fsurg.2021.786564",
+      "title": "miRNAs Related to Different Processes of Fracture Healing: An Integrative Overview",
+      "flagged_reference_count": 5,
+      "flagged_references": [
+        {
+          "doi": "10.1098/rsob.150258",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -1.95
+        },
+        {
+          "doi": "10.1016/j.molimm.2019.07.027",
+          "kind": "expression_of_concern",
+          "timing": "concurrent",
+          "gap_years": 0.21
+        },
+        {
+          "doi": "10.1080/21691401.2019.1687494",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -0.21
+        },
+        {
+          "doi": "10.1155/2020/6139469",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -2.14
+        },
+        {
+          "doi": "10.1186/s12951-020-00622-5",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -2.48
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W3034484268",
+      "doi": "10.3389/fneur.2020.00483",
+      "title": "Clinical Implications of Epigenetic Dysregulation in Perinatal Hypoxic-Ischemic Brain Damage",
+      "flagged_reference_count": 4,
+      "flagged_references": [
+        {
+          "doi": "10.1161/strokeaha.109.553644",
+          "kind": "retracted",
+          "timing": "concurrent",
+          "gap_years": 0.16
+        },
+        {
+          "doi": "10.1016/j.nbd.2013.11.023",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -1.73
+        },
+        {
+          "doi": "10.1159/000486923",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -1.06
+        },
+        {
+          "doi": "10.1002/jcb.26704",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -1.06
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W3046047524",
+      "doi": "10.1039/d0bm00599a",
+      "title": "Bioinorganic supplementation of calcium phosphate-based bone substitutes to improve <i>in vivo</i> performance: a systematic review and meta-analysis of animal studies",
+      "flagged_reference_count": 4,
+      "flagged_references": [
+        {
+          "doi": "10.1002/jbm.a.34259",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -0.79
+        },
+        {
+          "doi": "10.1111/clr.12413",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -4.39
+        },
+        {
+          "doi": "10.1002/jbm.a.34495",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -0.79
+        },
+        {
+          "doi": "10.1111/clr.12745",
+          "kind": "retracted",
+          "timing": "post_notice",
+          "gap_years": 1.67
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W4251438012",
+      "doi": "10.26481/dis.20210311jl",
+      "title": "Manipulating the hypoxic tumour microenvironment to study therapy resistance",
+      "flagged_reference_count": 4,
+      "flagged_references": [
+        {
+          "doi": "10.1073/pnas.1421438111",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -1.67
+        },
+        {
+          "doi": "10.1038/onc.2011.365",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -2.39
+        },
+        {
+          "doi": "10.1371/journal.pone.0095912",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -2.22
+        },
+        {
+          "doi": "10.1371/journal.pone.0042913",
+          "kind": "retracted",
+          "timing": "concurrent",
+          "gap_years": 0.45
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W3206082612",
+      "doi": "10.1016/j.euroneuro.2021.10.004",
+      "title": "Results of the COVID-19 mental health international for the general population (COMET-G) study",
+      "flagged_reference_count": 3,
+      "flagged_references": [
+        {
+          "doi": "10.1080/13548506.2020.1754438",
+          "kind": "retracted",
+          "timing": "concurrent",
+          "gap_years": 0.98
+        },
+        {
+          "doi": "10.1016/j.ajp.2020.102052",
+          "kind": "retracted",
+          "timing": "concurrent",
+          "gap_years": 0.95
+        },
+        {
+          "doi": "10.3389/fpubh.2021.610623",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -1.19
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W4220978336",
+      "doi": "10.3390/nu14071389",
+      "title": "A Scoping Literature Review of the Relation between Nutrition and ASD Symptoms in Children",
+      "flagged_reference_count": 3,
+      "flagged_references": [
+        {
+          "doi": "10.1002/14651858.cd003498.pub3",
+          "kind": "retracted",
+          "timing": "post_notice",
+          "gap_years": 2.98
+        },
+        {
+          "doi": "10.1111/jcpp.12652",
+          "kind": "retracted",
+          "timing": "post_notice",
+          "gap_years": 2.89
+        },
+        {
+          "doi": "10.1002/14651858.cd003498.pub2",
+          "kind": "retracted",
+          "timing": "post_notice",
+          "gap_years": 2.98
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W3122052963",
+      "doi": "10.26481/dis.20210115hs",
+      "title": "Integrative computational modeling of calcium handling and cardiac arrhythmias",
+      "flagged_reference_count": 3,
+      "flagged_references": [
+        {
+          "doi": "10.1161/circheartfailure.117.003960",
+          "kind": "retracted",
+          "timing": "post_notice",
+          "gap_years": 3.09
+        },
+        {
+          "doi": "10.1016/j.hrthm.2016.05.028",
+          "kind": "reinstated",
+          "timing": "post_notice",
+          "gap_years": 4.52
+        },
+        {
+          "doi": "10.1016/s0140-6736(20)31180-6",
+          "kind": "retracted",
+          "timing": "concurrent",
+          "gap_years": 0.54
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W4317761498",
+      "doi": "10.1016/j.annonc.2022.12.009",
+      "title": "Oncogene-addicted metastatic non-small-cell lung cancer: ESMO Clinical Practice Guideline for diagnosis, treatment and follow-up",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.1056/nejmoa1502309",
+          "kind": "corrected",
+          "timing": "post_notice",
+          "gap_years": 4.27
+        },
+        {
+          "doi": "10.1016/j.annonc.2020.04.478",
+          "kind": "reinstated",
+          "timing": "post_notice",
+          "gap_years": 2.7
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W3137226137",
+      "doi": "10.3389/fnhum.2020.568051",
+      "title": "International Consensus Based Review and Recommendations for Minimum Reporting Standards in Research on Transcutaneous Vagus Nerve Stimulation (Version 2020)",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.1016/j.euroneuro.2015.03.015",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -1.43
+        },
+        {
+          "doi": "10.1016/j.cortex.2017.03.017",
+          "kind": "expression_of_concern",
+          "timing": "pre_notice",
+          "gap_years": -1.05
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W3036611464",
+      "doi": "10.1002/fft2.25",
+      "title": "Interaction of dietary polyphenols and gut microbiota: Microbial metabolism of polyphenols, influence on the gut microbiota, and implications on host health",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.1371/journal.pone.0078700",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -5.12
+        },
+        {
+          "doi": "10.1371/journal.pone.0185999",
+          "kind": "expression_of_concern",
+          "timing": "pre_notice",
+          "gap_years": -2.61
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W3028094831",
+      "doi": "10.1183/13993003.00953-2019",
+      "title": "ERS/ESTS/EACTS/ESTRO guidelines for the management of malignant pleural mesothelioma",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.1158/1078-0432.ccr-15-1130",
+          "kind": "expression_of_concern",
+          "timing": "concurrent",
+          "gap_years": 0.2
+        },
+        {
+          "doi": "10.1186/s12014-016-9103-3",
+          "kind": "corrected",
+          "timing": "post_notice",
+          "gap_years": 4.25
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W3133792727",
+      "doi": "10.1007/s00018-021-03802-0",
+      "title": "Oxidative stress and impaired oligodendrocyte precursor cell differentiation in neurological disorders",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.1007/s10735-019-09824-0",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -4.33
+        },
+        {
+          "doi": "10.1186/s13148-019-0763-5",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -2.66
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W4281891940",
+      "doi": "10.3389/fpsyg.2022.887255",
+      "title": "Psychedelic-Assisted Psychotherapy\u2014A Systematic Review of Associated Psychological Interventions",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.1007/s00213-019-05249-5",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -2.17
+        },
+        {
+          "doi": "10.1007/s00213-020-05548-2",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -2.17
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W3198934400",
+      "doi": "10.1093/cvr/cvab298",
+      "title": "Cardiovascular disease and COVID-19: a consensus paper from the ESC Working Group on Coronary Pathophysiology &amp; Microcirculation, ESC Working Group on Thrombosis and the Association for Acute CardioVascular Care (ACVC), in collaboration with the European Heart Rhythm Association (EHRA)",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.1056/nejmoa2007621",
+          "kind": "retracted",
+          "timing": "post_notice",
+          "gap_years": 1.27
+        },
+        {
+          "doi": "10.1016/s0140-6736(20)32656-8",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -1.74
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W4324020867",
+      "doi": "10.1002/14651858.cd001211.pub4",
+      "title": "Antibiotics versus placebo for acute bacterial conjunctivitis",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.1002/14651858.cd000243.pub2",
+          "kind": "retracted",
+          "timing": "post_notice",
+          "gap_years": 7.41
+        },
+        {
+          "doi": "10.1002/14651858.cd000243.pub3",
+          "kind": "retracted",
+          "timing": "post_notice",
+          "gap_years": 7.41
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W3027483970",
+      "doi": "10.1093/ejcts/ezaa158",
+      "title": "ERS/ESTS/EACTS/ESTRO guidelines for the management of malignant pleural mesothelioma",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.1158/1078-0432.ccr-15-1130",
+          "kind": "expression_of_concern",
+          "timing": "concurrent",
+          "gap_years": 0.17
+        },
+        {
+          "doi": "10.1186/s12014-016-9103-3",
+          "kind": "corrected",
+          "timing": "post_notice",
+          "gap_years": 4.23
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W4293802544",
+      "doi": "10.1038/s41467-022-32310-3",
+      "title": "Reproducibility of real-world evidence studies using clinical practice data to inform regulatory and coverage decisions",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.1056/nejmoa2007621",
+          "kind": "retracted",
+          "timing": "post_notice",
+          "gap_years": 2.24
+        },
+        {
+          "doi": "10.1016/s0140-6736(20)31180-6",
+          "kind": "retracted",
+          "timing": "post_notice",
+          "gap_years": 2.24
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W3180022284",
+      "doi": "10.1124/pharmrev.120.000273",
+      "title": "The Molecular Biology of Phosphodiesterase 4 Enzymes as Pharmacological Targets: An Interplay of Isoforms, Conformational States, and Inhibitors",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.1074/jbc.m109.008078",
+          "kind": "retracted",
+          "timing": "concurrent",
+          "gap_years": 0.86
+        },
+        {
+          "doi": "10.1093/jb/mvz016",
+          "kind": "retracted",
+          "timing": "pre_notice",
+          "gap_years": -1.29
+        }
+      ]
+    },
+    {
+      "work_id": "https://openalex.org/W4379365058",
+      "doi": "10.1080/2162402x.2023.2219591",
+      "title": "Trial watch: chemotherapy-induced immunogenic cell death in oncology",
+      "flagged_reference_count": 2,
+      "flagged_references": [
+        {
+          "doi": "10.2147/cmar.s198615",
+          "kind": "retracted",
+          "timing": "post_notice",
+          "gap_years": 1.66
+        },
+        {
+          "doi": "10.1177/1533033819861971",
+          "kind": "retracted",
+          "timing": "post_notice",
+          "gap_years": 1.77
+        }
+      ]
+    }
+  ],
+  "notes": []
+}

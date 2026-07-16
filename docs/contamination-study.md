@@ -72,21 +72,47 @@ uv run python -m citeguard.scan --ror https://ror.org/013cjyk83 --since 2015-01-
 - **Conservative by construction.** Ambiguous cases are excluded from flagged counts, which
   pushes the estimate down, not up.
 
-## Results
+## Results — first run: Maastricht University, 2020–present
 
-TODO — run the scan on the target corpus/corpora and paste `report.md` figures here:
+A pilot scan of one OpenAlex-adopting institution. Raw outputs are committed alongside
+this write-up (`study/maastricht-2020.json`, `study/maastricht-2020.md`); rerun with the
+command above to reproduce.
 
-- Corpus: TODO (institution / journal / field)
-- Works scanned: TODO
-- Contamination rate: TODO%
-- Total flagged citations: TODO (retracted TODO / corrected TODO / EoC TODO)
-- **Post-notice citations: TODO** (of which TODO retracted) — grace window TODO days
-- Timing split: pre-notice TODO / concurrent TODO / post-notice TODO
-- Most-cited flagged papers: TODO
+- **Corpus:** Maastricht University (`ROR 02jz4aj89`), works published 2020-01-01 onward.
+- **Works scanned:** 45,307 (34,822 had references available in OpenAlex).
+- **Works citing flagged research:** 712 — a **2.0% contamination rate** among works with
+  references.
+- **Total flagged citations:** 798, by editorial status:
+  retracted 522 · expression of concern 119 · corrected 107 · reinstated 50.
+- **Citation timing (grace window 365 days):**
+  - post-notice **402 (50%)** — cited more than a year after the editorial notice,
+  - pre-notice 271 (blameless — cited before the notice existed),
+  - concurrent 125 (within the propagation window).
+
+**The headline:** half of all flagged citations were made well after the notice. Pre-notice
+citations are blameless and are reported separately; the 402 post-notice citations are the
+measurable problem — and would be invisible to a tool that only checks whether a cited paper
+is *currently* flagged, without asking *when* it was cited.
+
+**Conservative labeling, demonstrated on real data:** the Corman-Drosten COVID PCR paper
+(`10.2807/1560-7917.es.2020.25.3.2000045`) is among the most-cited flagged papers in this
+corpus (27 citations) — and CiteGuard labels it *expression of concern*, **never retracted**.
+This is the exact false positive a single-boolean tool produces; here it is avoided on live
+data, not just in the test suite.
+
+### Caveats specific to this run
+
+- Numbers are a **lower bound** (see Limitations): OpenAlex reference coverage is incomplete,
+  and Retraction Watch does not carry every notice.
+- This is a single institution chosen as a methodology pilot; it is **not** a claim that
+  Maastricht is unusual — a ~2% contamination rate is consistent with an ordinary research
+  university and should be read as a baseline, not an indictment.
+- All figures describe citation *hygiene*, not author conduct. No individual work or author
+  is being accused of anything.
 
 ## Artifacts
 
 - Code + eval harness: this repository (MIT), archived at
   [10.5281/zenodo.21304655](https://doi.org/10.5281/zenodo.21304655).
-- Scan outputs (`report.json` / `report.md`) should be committed alongside the write-up for
-  reproducibility.
+- Scan outputs for the run above: [`study/maastricht-2020.json`](study/maastricht-2020.json)
+  and [`study/maastricht-2020.md`](study/maastricht-2020.md).
