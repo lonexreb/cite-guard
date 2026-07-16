@@ -44,9 +44,10 @@ def cached_json_get(
         if resp.status_code in RETRYABLE and attempt < max_retries:
             retry_after = resp.headers.get("Retry-After")
             if retry_after and retry_after.isdigit():
-                delay = float(retry_after)
+                # Never sleep a server-sent value uncapped: a daily-quota
+                # Retry-After can be hours and silently hang the caller.
+                delay = min(float(retry_after), 120.0)
             else:
-                # 429s from a shared pool can persist for minutes: cap at 120s.
                 delay = min(retry_base_seconds * (2**attempt), 120.0)
             time.sleep(delay)
             attempt += 1
