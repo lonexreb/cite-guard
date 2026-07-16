@@ -231,6 +231,7 @@ def scan_institution(
     id_map_path: Path = ID_MAP_PATH,
     top_n: int = 20,
     grace_days: int = DEFAULT_GRACE_DAYS,
+    page_delay_seconds: float = 0.0,
 ) -> ContaminationReport:
     """Fetch an institution's works (cheap list pages) and scan them locally."""
     r = get_resources()
@@ -241,7 +242,11 @@ def scan_institution(
             "The RW->OpenAlex ID map is empty or missing; citation scanning found "
             "nothing. Build it once with citeguard.watch.build_rw_id_map."
         )
-    works = list(r.oa_client.list_institution_works(ror, from_publication_date=since))
+    works = list(
+        r.oa_client.list_institution_works(
+            ror, from_publication_date=since, page_delay_seconds=page_delay_seconds
+        )
+    )
     report = scan_works(
         works, r.rw_index, flagged_id_to_doi, corpus=ror, top_n=top_n, grace_days=grace_days
     )

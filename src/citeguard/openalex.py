@@ -9,13 +9,14 @@ Credit discipline (free tier ~ $1/day; search costs ~10x a record lookup):
 from __future__ import annotations
 
 import os
+import time
 from collections.abc import Iterator, Sequence
 from pathlib import Path
 from typing import Any
 
 import httpx
 
-from citeguard._http import cached_json_get
+from citeguard._http import cached_json_get, is_cached
 from citeguard.status import Signal, Source, StatusKind, Strength, normalize_doi
 
 OPENALEX_BASE = "https://api.openalex.org"
@@ -61,6 +62,9 @@ class OpenAlexClient:
             self.cache_dir,
             retry_base_seconds=self.retry_base_seconds,
         )
+
+    def _is_cached(self, path: str, **params: str) -> bool:
+        return is_cached(path, self._params(**params), self.cache_dir)
 
     def get_work(self, id_or_doi: str) -> dict[str, Any] | None:
         """Single-record lookup by OpenAlex ID or DOI. None on 404."""
@@ -120,14 +124,28 @@ class OpenAlexClient:
         return found
 
     def list_institution_works(
-        self, ror: str, from_publication_date: str | None = None
+        self,
+        ror: str,
+        from_publication_date: str | None = None,
+        page_delay_seconds: float = 0.0,
     ) -> Iterator[dict[str, Any]]:
-        """Cursor-paginated works for an institution (cheap list pages)."""
+        """Cursor-paginated works for an institution (cheap list pages).
+
+        page_delay_seconds throttles between uncached pages to stay polite on
+        large corpora; cached pages are not delayed.
+        """
         filters = [f"authorships.institutions.ror:{ror}"]
         if from_publication_date:
             filters.append(f"from_publication_date:{from_publication_date}")
         cursor = "*"
         while cursor:
+            was_cached = self._is_cached(
+                "/works",
+                filter=",".join(filters),
+                select=WORK_SELECT,
+                cursor=cursor,
+                **{"per-page": "200"},
+            )
             page = self._get(
                 "/works",
                 filter=",".join(filters),
@@ -137,6 +155,8 @@ class OpenAlexClient:
             )
             yield from page.get("results", [])
             cursor = (page.get("meta") or {}).get("next_cursor") or ""
+            if cursor and page_delay_seconds and not was_cached:
+                time.sleep(page_delay_seconds)
 
 
 def openalex_signal(work: dict[str, Any]) -> Signal | None:

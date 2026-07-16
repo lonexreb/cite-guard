@@ -17,6 +17,16 @@ import httpx
 RETRYABLE = {429, 500, 502, 503, 504}
 
 
+def _cache_key(url: str, params: dict[str, str]) -> str:
+    return hashlib.sha256(json.dumps([url, sorted(params.items())]).encode()).hexdigest()
+
+
+def is_cached(url: str, params: dict[str, str], cache_dir: Path | None) -> bool:
+    if cache_dir is None:
+        return False
+    return (cache_dir / f"{_cache_key(url, params)}.json").exists()
+
+
 def cached_json_get(
     client: httpx.Client,
     url: str,
@@ -30,10 +40,7 @@ def cached_json_get(
     Raises httpx.HTTPStatusError on non-retryable errors (incl. 404 —
     callers that expect misses catch it).
     """
-    key = hashlib.sha256(
-        json.dumps([url, sorted(params.items())]).encode()
-    ).hexdigest()
-    cache_file = cache_dir / f"{key}.json" if cache_dir else None
+    cache_file = cache_dir / f"{_cache_key(url, params)}.json" if cache_dir else None
     if cache_file is not None and cache_file.exists():
         data: dict[str, Any] = json.loads(cache_file.read_text())
         return data
